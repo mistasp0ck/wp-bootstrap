@@ -1,0 +1,41 @@
+
+/*
+WP-Bootstrap - Main Styles
+*/
+
+// @import "customVariables";
+@import "variables.scss";
+@import "bootstrap.scss";
+@import "elements.scss";
+@import "buttons.scss";
+@import "fonts.scss";
+@import "wp.scss";
+// visual composer addons
+@import "vc_styles/separator.scss";
+
+//all included
+
+@import "../../bower_components/slick-carousel/slick/slick-theme.scss";
+@import "../../bower_components/slick-carousel/slick/slick.scss";
+@import '../../bower_components/font-awesome/scss/fontawesome.scss';
+@import '../../bower_components/font-awesome/scss/solid.scss';
+@import '../../bower_components/font-awesome/scss/brands.scss';
+@import "social.scss";
+@import "layout.scss";
+@import "navbar.scss";
+@import "posts.scss";
+@import "pages.scss";
+@import "comments.scss";
+@import "image-attachments.scss";
+@import "widgets.scss";
+@import "alert.scss";
+@import "gallery.scss";
+@import "vc_styles/vc_gallery.scss";
+@import "slick-carousel.scss";
+@import "arrow-animate.scss";
+@import "sidebar-nav.scss";
+@import "flyout-nav-full.scss";
+@import "search-expander.scss";
+@import "sections.scss";
+@import "forms.scss";
+@import "fs-base.scss";

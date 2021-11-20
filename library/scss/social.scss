@@ -1,0 +1,51 @@
+.social {
+  // @media (max-width: 991px) {
+  //   display: flex;
+  //   justify-content: space-between;
+  // }
+
+  list-style: none;
+  li {
+    float: left;
+    margin-bottom: 10px;
+    @media (max-width: 991px) {
+      float: left;
+    }
+    i {
+      display: inline-block;
+
+      color: $color-dark;
+      width: 44px;
+      text-align: center;
+      &:hover,
+      &:focus,
+      &:active {
+        color: $color-dark-hover;
+        text-decoration: none;
+      } 
+      font-size: 25px;
+      @media (min-width: 768px) {
+        font-size: 18px;
+        padding-right: 20px;
+      } 
+    }
+    a {
+      font-size: 14px;
+      transition: $link-hover-anim;
+      color: $color-dark; 
+      &:hover,
+      &:focus,
+      &:active {
+        color: $color-dark-hover;
+        text-decoration: none;
+      }  
+    }
+    span {
+      @media (max-width: 767px) {
+        display: none;
+      }
+    }
+  }
+
+  letter-spacing: 0.32px;
+}

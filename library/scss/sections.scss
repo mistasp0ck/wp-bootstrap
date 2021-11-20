@@ -1,0 +1,351 @@
+
+// Extra small screen / phone
+//** Deprecated `@screen-xs` as of v3.0.1
+$screen-xs:                  480px;
+//** Deprecated `$screen-xs-min` as of v3.2.0
+$screen-xs-min:              $screen-xs;
+//** Deprecated `$screen-phone` as of v3.0.1
+$screen-phone:               $screen-xs-min;
+
+// Small screen / tablet
+//** Deprecated `$screen-sm` as of v3.0.1
+$screen-sm:                  768px;
+$screen-sm-min:              $screen-sm;
+//** Deprecated `$screen-tablet` as of v3.0.1
+$screen-tablet:              $screen-sm-min;
+
+// Medium screen / desktop
+//** Deprecated `$screen-md` as of v3.0.1
+$screen-md:                  992px;
+$screen-md-min:              $screen-md;
+//** Deprecated `$screen-desktop` as of v3.0.1
+$screen-desktop:             $screen-md-min;
+
+// Large screen / wide desktop
+//** Deprecated `$screen-lg` as of v3.0.1
+$screen-lg:                  1200px;
+$screen-lg-min:              $screen-lg;
+//** Deprecated `$screen-lg-desktop` as of v3.0.1
+$screen-lg-desktop:          $screen-lg-min;
+
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max:              ($screen-sm-min - 1);
+$screen-sm-max:              ($screen-md-min - 1);
+$screen-md-max:              ($screen-lg-min - 1);
+
+$row-xs: 0px;
+$row-sm: 15px;
+$row-md: 30px;
+$row-lg: 30px;
+
+$col-xs: 15px;
+$col-sm: 15px;
+$col-md: 15px;
+$col-lg: 30px;
+
+$sm-xs: 15px;
+$sm-sm: 15px;
+$sm-md: 15px;
+$sm-lg: 15px;
+
+$md-xs: 25px;
+$md-sm: 30px;
+$md-md: 30px;
+$md-lg: 40px;
+
+$lg-xs: 30px;
+$lg-sm: 60px;
+$lg-md: 60px;
+$lg-lg: 70px;
+
+$xl-xs: 40px;
+$xl-sm: 100px;
+$xl-md: 100px;
+$xl-lg: 110px;
+
+.vc_hidden-xs {
+  @media (max-width: $screen-xs-max) {
+    display: none !important;
+  }
+}
+
+.vc_hidden-sm {
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    display: none !important;
+  }
+}
+
+.vc_hidden-md {
+  @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+    display: none !important;
+  }
+}
+
+.vc_hidden-lg {
+  @media (min-width: $screen-lg-min) {
+    display: none !important;
+  }
+}
+// default if no classes added
+.vc_section, .section {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+// Add these classes either to a <section> tag or row 
+.section-xl {
+  margin-top: $xl-xs;
+  margin-bottom: $xl-xs;
+}
+.section-xl.vc_section-has-fill {
+  padding: 0;
+  margin: 0;
+}
+
+// @todo: needs to be single div
+.section-xl.vc_section-has-fill > div:first-child,.section-xl.vc_section-has-fill > div:last-child {
+  margin-top: 0px;
+  margin-bottom: 0px; 
+  padding-top: $xl-xs;
+  padding-bottom: $xl-xs; 
+}
+
+.section-lg {
+  margin-top: $lg-xs;
+  margin-bottom: $lg-xs;
+}
+
+.section-lg.vc_section-has-fill {
+  padding: 0;
+  margin: 0;
+}
+
+.section-lg.vc_section-has-fill > div:first-child,
+// .section-lg.vc_section-has-fill > div:last-child 
+{
+  margin-top: 0px;
+  margin-bottom: 0px; 
+  padding-top: $lg-xs;
+  padding-bottom: 0; 
+}
+
+// .section-lg.vc_section-has-fill > div:first-child,
+.section-lg.vc_section-has-fill > div:last-child 
+{
+  margin-top: 0px;
+  margin-bottom: 0px; 
+  padding-top: 0;
+  padding-bottom: $lg-xs; 
+}
+
+.section-md {
+  margin-top: $md-xs;
+  margin-bottom: $md-xs;
+}
+
+.section-pad-md {
+  padding-top: $md-xs;
+  padding-bottom: $md-xs;
+}
+
+.section-md.vc_section-has-fill {
+  padding: 0;
+  margin: 0;
+}
+.section-md.vc_section-has-fill > div:first-child, .section-md.vc_section-has-fill > div:last-child,{
+  margin-top: 0px;
+  margin-bottom: 0px; 
+  padding-top: $md-xs;
+  padding-bottom: $md-xs; 
+}
+
+.section-sm {
+  margin-top: $sm-xs;
+  margin-bottom: $sm-xs;
+}
+.section-sm.vc_section-has-fill {
+  padding: 0;
+  margin: 0;
+}
+
+.section-sm.vc_section-has-fill > div:first-child,.section-sm.vc_section-has-fill > div:last-child {
+  margin-top: 0px;
+  margin-bottom: 0px; 
+  padding-top: $sm-xs;
+  padding-bottom: $sm-xs; 
+}
+
+.no-margin-xs,.no-vert-margin-xs {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.no-padding-xs.section-sm,
+.no-padding-xs.section-md,
+.no-padding-xs.section-lg,
+.no-padding-xs.section-xl,
+.no-padding-xs.section-sm.vc_section-has-fill > div:first-child,
+.no-padding-xs.section-md.vc_section-has-fill > div:first-child,
+.no-padding-xs.section-lg.vc_section-has-fill > div:first-child,
+.no-padding-xs.section-xl.vc_section-has-fill > div:first-child,
+.no-padding-xs.section-sm.vc_section-has-fill > div:last-child,
+.no-padding-xs.section-md.vc_section-has-fill > div:last-child,
+.no-padding-xs.section-lg.vc_section-has-fill > div:last-child,
+.no-padding-xs.section-xl.vc_section-has-fill > div:last-child,
+ {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.section-sm:last-of-type {
+  // margin-bottom: 0
+}
+
+// .row {
+//   margin-top: $row-xs;
+//   margin-bottom: $row-xs;
+// }
+
+@media (max-width: 768px) {
+  .row [class^="col-"] {
+    padding-top: $col-xs;
+    padding-bottom: $col-xs;
+  }
+}
+
+@media (min-width: 768px) {
+
+  .vc_section, .section {
+      padding-top: $md-sm;
+      padding-bottom: $md-sm;
+  }
+  .vc_section > .col-has-fill, .section > .col-has-fill {
+    padding-top: $md-sm;
+    margin-top: -$md-sm;
+
+    padding-bottom: $md-sm;
+    margin-bottom: -$md-sm;    
+  }
+
+
+  // .row {
+  //   margin-top: $row-sm;
+  //   margin-bottom: $row-sm;
+  // }
+
+  .no-margin-xs,.no-vert-margin-xs {
+    margin-top: inherit;
+    margin-bottom: inherit;
+  }
+
+  .no-padding-xs,.no-vert-padding-xs {
+    margin-top: inherit;
+    margin-bottom: inherit;
+  }
+
+}
+
+@media (min-width: 1024px) {
+
+  .vc_section, .section {
+      padding-top: $md-lg;
+      padding-bottom: $md-lg;
+  }  
+  // .row {
+  //   margin-top: $row-md;
+  //   margin-bottom: $row-md;
+  // }
+
+}
+
+@media (min-width: 1200px) {
+
+  // .row [class^="col-"] {
+  //   padding-top: $col-lg;
+  //   padding-bottom: $col-lg;
+  // }
+
+  .section-xl {
+    margin-top: $xl-lg;
+    margin-bottom: $xl-lg;
+  }
+  .section-xl.vc_section-has-fill > div:first-child,
+  .section-xl.vc_section-has-fill > div:last-child 
+  {
+    margin-top: 0px;
+    margin-bottom: 0px; 
+    padding-top: $xl-lg;
+    padding-bottom: $xl-lg; 
+  }
+
+  .section-lg {
+    margin-top: $lg-lg;
+    margin-bottom: $lg-lg;
+  }
+
+  // .section-lg,.section {
+  //   margin-top: $lg-xs;
+  //   margin-bottom: $lg-xs;
+  // }
+
+  .section-lg.vc_section-has-fill > div:first-child,
+  .section-lg.vc_section-has-fill > div:last-child 
+  {
+    margin-top: 0px;
+    margin-bottom: 0px; 
+    padding-top: $lg-lg;
+    padding-bottom: 0; 
+  }
+  .section-lg.vc_section-has-fill > div:last-child 
+  {
+    margin-top: 0px;
+    margin-bottom: 0px; 
+    padding-top: 0;
+    padding-bottom: $lg-lg; 
+  }
+
+  .section-md {
+    margin-top: $md-lg;
+    margin-bottom: $md-lg;
+  }
+
+  .section-pad-md {
+    padding-top: $md-lg;
+    padding-bottom: $md-lg;
+  }
+
+  .section-md.vc_section-has-fill > div:first-child,
+  .section-md.vc_section-has-fill > div:last-child
+   {
+    margin-top: 0px;
+    margin-bottom: 0px; 
+    padding-top: $md-lg;
+    padding-bottom: $md-lg; 
+  }
+
+  .section-sm {
+    margin-top: $sm-lg;
+    margin-bottom: $sm-lg;
+  }
+
+  .section-sm.vc_section-has-fill > div:first-child, {
+    margin-top: 0px;
+    margin-bottom: 0px; 
+    padding-top: $sm-lg;
+    padding-bottom: $sm-lg; 
+  }  
+}
+
+/*.vc_section,.section {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}*/
+
+/*  .vc_section,.section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }*/
+
+
+
+

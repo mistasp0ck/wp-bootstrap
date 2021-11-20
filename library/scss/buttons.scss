@@ -1,0 +1,49 @@
+//Used mainly for Extending the Visual Composer Styles
+
+.btn.btn-inverse {
+	background-color: #333;
+	border-color: #333;
+	color: #ffffff;
+	&.btn:hover,&.btn:focus,&.btn:active {
+		background-color: #575757;
+		color: #ffffff;
+	}
+}
+
+.btn-primary {
+  // padding: 30px;
+}
+
+.btn.btn-shape-square {
+	border-radius: 0;	
+}
+.btn.btn-style-outline{
+	background-color: transparent;
+}
+
+// Alternate buttons
+// --------------------------------------------------
+
+// .btn-style-outline.btn-primary ,.btn-primary-inv {
+//   color: $secondary;
+// }
+
+// .btn-style-outline.btn-default ,.btn-default-inv {
+//   color: $btn-default-bg;
+// }
+
+// .btn-style-outline.btn-success ,.btn-success-inv {
+//   color: $btn-success-bg;
+// }
+
+// .btn-style-outline.btn-info ,.btn-info-inv {
+//   color: $btn-info-bg;
+// }
+
+// .btn-style-outline.btn-warning ,.btn-warning-inv {
+//   color: $btn-warning-bg;
+// }
+
+// .btn-style-outline.btn-danger ,.btn-danger-inv {
+//   color: $btn-danger-bg;
+// }

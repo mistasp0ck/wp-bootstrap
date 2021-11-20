@@ -1,0 +1,110 @@
+/*
+
+WP-Bootstrap - Post Styles
+
+*/
+
+#main p.meta{
+	font-style: italic;
+	color: #808080;
+}
+
+#main article{
+	margin-bottom: 18px;
+	padding: 0 0 9px;
+}
+
+#main article footer{
+	border-top: none;
+	margin-top: 0;
+	padding-top: 0;
+	position: relative;
+	min-height: 20px;
+}
+
+p.tags{
+	line-height: 20px;
+	font-size: 12px;
+}
+p.tags a {
+	border-bottom: none;
+	color: $link-color;
+}
+p.tags a:hover,p.tags a:focus {
+	border-bottom: none;
+	color: $link-hover-color;
+	text-decoration: underline;
+}
+
+div[id*='attachment_']{
+	max-width: 100%;
+	height: 100%;
+}
+
+#main .hero-unit img{
+	margin-bottom: 1em;
+}
+
+#main article img{
+	height: auto;
+	max-width: 100%;
+}
+.aligncenter, div.aligncenter {
+	margin: 5px auto 5px auto;
+	display: block;
+}
+.alignleft, div.alignleft {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-right: 10px;
+    float: left;
+}
+.alignright, div.alignright {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: 10px;
+    float: right;
+}
+
+.alignnone, div.alignnone {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.wp-caption-text {
+	font-style: italic;
+	color: #777;
+}
+
+.archive #main .post h3{
+	line-height: 30px;
+	margin-bottom: 10px;
+}
+
+video {
+	max-width: 100%;
+	height: auto;
+}
+
+.video-container {
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 30px;
+	height: 0;
+	overflow: hidden;
+}
+
+.video-container iframe,  
+.video-container object,  
+.video-container embed {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.video-wrapper {
+	width: 630px;
+	max-width: 100%;
+	margin-bottom: 18px;
+}

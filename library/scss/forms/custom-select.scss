@@ -1,0 +1,215 @@
+/*the container must be positioned relative:*/
+.custom-select {
+  position: relative;
+  // font-family: Arial;
+}
+@media (min-width: 641px){
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+}
+.select-selected, .gform_wrapper select {
+  border: 1px solid #E6E6E6;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #747474;
+  padding: 8px 16px;
+  background-color: #fff;
+  position: relative;
+  line-height: 30px;
+  // height: 40px;
+}
+.gform_wrapper .select-selected {
+  height: 49px;
+}
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  color: #66BE6C;
+  @extend %fa-icon;
+  @extend .fas;
+  content: fa-content($fa-var-chevron-down);
+  top: 16px;
+  right: 25px;
+  width: 0;
+  height: 0;
+}
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  @extend %fa-icon;
+  @extend .fas;
+  content: fa-content($fa-var-chevron-up);
+}
+
+/*style the arrow inside the select element:*/
+.gform_wrapper .schedule-appointment .chosen-container-single .chosen-single div b, .chosen-single div b{
+  display: none;
+}
+.gform_wrapper .schedule-appointment .chosen-container-single .chosen-single:after,.chosen-container-single .chosen-single:after {
+  position: absolute;
+  color: #66BE6C;
+  @extend %fa-icon;
+  @extend .fas;
+  content: fa-content($fa-var-chevron-down);
+  // top: 10px;
+  top: 14px;
+  right: 9px;
+  // width: 0;
+  // height: 0;
+  background: none;
+}
+/*point the arrow upwards when the select box is open (active):*/
+.gform_wrapper .schedule-appointment .chosen-container-active.chosen-with-drop .chosen-single:after,
+.chosen-container-active.chosen-with-drop .chosen-single:after {
+  border-color: transparent transparent #fff transparent;
+  @extend %fa-icon;
+  @extend .fas;
+  content: fa-content($fa-var-chevron-up);
+}
+.gform_wrapper .schedule-appointment .chosen-container .chosen-results li,
+.chosen-container .chosen-results li {
+  font-weight: 400;
+  padding: 8px 16px;
+  line-height: 1.2;
+  font-size: 16px;
+  margin-left: -4px !important;
+}
+
+.gform_wrapper .schedule-appointment .chosen-container .chosen-results li.highlighted,
+.chosen-container .chosen-results li.highlighted {
+  background: none;
+  background-color: rgba(102, 191, 109, 0.18);
+  color: #747474;
+}
+
+.schedule-appointment .chosen-container-single .chosen-single,
+.chosen-container-single .chosen-single {
+    position: initial;
+}
+
+
+.select-selected.select-arrow-active {
+  border-bottom-color: transparent;
+  border-radius: 4px 4px 0px 0px;
+}
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  color: #747474;
+  // padding: 8px 16px;
+  // border: 1px solid transparent;
+  // border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: #fff;
+  // top: 100%;
+  // left: 0;
+  top: 92%;
+  left: 5px;
+  right: 0;
+  z-index: 99;
+  border-left: 1px solid #E6E6E6;
+  border-right: 1px solid #E6E6E6;
+  border-bottom: 1px solid #E6E6E6;
+  //for gravity forms margin
+  margin-right: 16px;
+  border-radius: 0px 0px 4px 4px;
+}
+.gfield .select-items {
+  right: 16px;
+}
+.gform_wrapper .schedule-appointment .chosen-container-single .chosen-single,
+.gform_wrapper .schedule-appointment .gfield_select,
+.chosen-container-single .chosen-single {
+  border-radius: 4px;
+  background: #fff;  
+  border: 1px solid #E6E6E6;
+  // height: 40px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #747474;
+  // padding: 8px 16px;
+  box-shadow: none;
+
+  padding: 10px 16px;
+  height: 45px;
+
+}
+.gform_wrapper .schedule-appointment .ginput_container_select.loading {
+  .chosen-single {
+    color: #b3b3b3;
+    background: #fbfbfb;
+    transition: 0.35s ease-in-out;
+  }
+  .chosen-container-active.chosen-with-drop .chosen-single:after, 
+  .chosen-container-active.chosen-with-drop .chosen-single:after,
+  .chosen-container-single .chosen-single:after {
+    transform-origin: 50%;
+    @extend .fa-pulse;
+    @extend .fa-spinner;
+    content: fa-content($fa-var-spinner);
+  }
+}
+
+// .gf_placeholder {
+//   color: #CDCDCD;
+//   font-style: italic;
+// }
+
+.gform_wrapper .schedule-appointment .chosen-container-active.chosen-with-drop .chosen-single,
+.chosen-container-active.chosen-with-drop .chosen-single {
+  background: #fff;  
+  border: 1px solid #E6E6E6;
+  border-radius: 4px 4px 0px 0px;
+}
+.gform_wrapper .schedule-appointment .chosen-container .chosen-drop,
+.chosen-container .chosen-drop {
+  border-left: 1px solid #E6E6E6;
+  border-right: 1px solid #E6E6E6;
+  border-bottom: 1px solid #E6E6E6;
+  //for gravity forms margin
+  // margin-right: 16px;
+  border-radius: 0px 0px 4px 4px;
+  box-shadow: 1px 4px 2px -2px rgba(116, 116, 116, 0.67);
+}
+
+.gfield .select-items,.custom-select .select-items {
+  left: 0px;
+  margin-right: 0;
+}
+.select-items div {
+  padding: 8px 16px;
+  // border-top: 1px solid #E6E6E6;
+}
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(102, 191, 109, 0.18);
+}
+
+@media only screen and (min-width: 641px){
+  body .gform_wrapper .schedule-appointment select.medium.gfield_select+div.chosen-container-multi[style], 
+  body .gform_wrapper .schedule-appointment select.medium.gfield_select+div.chosen-container-single[style] ,
+  div.chosen-container-multi[style], 
+  div.chosen-container-single[style] {
+
+    width: 100% !important;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi), only screen and (min-resolution: 1.5dppx){
+.schedule-appointment .chosen-container .chosen-results-scroll-down span, 
+.schedule-appointment .chosen-container .chosen-results-scroll-up span, 
+.schedule-appointment .chosen-container-multi .chosen-choices .search-choice .search-choice-close,
+.schedule-appointment .chosen-container-single .chosen-search input[type=text], 
+.schedule-appointment .chosen-container-single .chosen-single abbr, 
+.schedule-appointment .chosen-container-single .chosen-single div b, 
+.schedule-appointment .chosen-rtl .chosen-search input[type=text] {
+ background-image: none !important;
+ }  
+}

@@ -1,0 +1,35 @@
+// Colors
+$link-hover-anim-all: all 0.16s ease-in-out;
+$link-hover-anim: color 0.16s ease-in-out,background-color 0.16s ease-in-out;
+$link-opacity-anim: opacity 0.16s ease-in-out;
+
+$main-green: #00B6B6;
+$main-blue: #0069AA;
+$main-orange: #F47A20;
+$main-grey: #9B9B9B;
+
+$sec-blue: #137BB7;
+$main-blue-light: #009CDB;
+
+// Affix Menu
+
+//initial (transparent) State
+$color-light: #FFFFFF;
+$color-light-hover: #e9e9e9;
+$menu-bg: transparent;
+
+//affixed (solid) State
+$color-dark: #333;
+$color-dark-hover: #808080;
+$menu-bg: #fff;
+
+$light-grey: #D8D8D8;
+
+$menu-transition-speed: 0.25s;
+$bg-transition-speed: 0.75s;
+
+// Responsive Breaks (from _variables.scss for reference)
+// $screen-phone
+// $screen-tablet
+// $screen-desktop
+// $screen-lg-desktop

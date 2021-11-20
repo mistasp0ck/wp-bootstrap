@@ -1,0 +1,132 @@
+// js-force-full-width fade in alert
+.alert.alert-default {
+  margin-left: 0px;
+  margin-right: 0px;
+  padding: 15px 15px 15px 15px;
+  height: auto;
+  // min-height: 80px;
+  margin-bottom: 0;
+  @media (max-width: 767px) {
+    padding: 15px 0px 15px 0px;
+  }
+  .icon {
+    @media (max-width: 767px) {
+      display: none;
+      padding: 15px 0px 15px 0px;
+    }
+  }
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+  }
+}
+.js-force-full-width {
+  // min-height: auto;
+  &.alert {
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+  }
+}
+.vc_message_box.alert {
+  padding: 0;
+  margin: 0;
+  margin: 0 0 21.73913043px 0;
+  .row [class^="col-"] {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .alert-inner {
+    padding: 1em 1em 1em 4em;
+    position: relative;
+  }
+}
+
+.alert h3 {
+  font-weight: 500;
+  font-size: 20px;
+  // color: #FFFFFF;
+  letter-spacing: 0;  
+  margin-top: 0;
+  margin-right: 50px;
+  margin-bottom: 13px
+}
+.alert p {
+  // color: #FFFFFF;
+  margin-bottom: 0;
+  letter-spacing: 0;
+  line-height: 25px;
+  @media (max-width: 767px) {
+    margin-bottom: 1rem;
+  }
+}
+
+// .alert-notice {
+//   background-color: #E28524;
+//   border-color: #E28524;
+// }
+.alert-info {
+  // background-color: #4AA0C7;
+  // border-color: #4AA0C7;
+  // color:#FFF;
+}
+.alert-warning {
+  // background-color: #E28524;
+  // border-color: #E28524;
+}
+.alert-danger {
+  // background-color: #D24545;
+  // border-color: #D24545;
+}
+.alert .close span,
+.vc_message_box .close span {
+  display: block;
+  // &:before {
+  //   @extend %fa-icon;
+  //   @extend .fas;
+  //   content: fa-content($fa-var-times);
+  //   font-size: 1.7em;  
+  // }
+
+}
+.vc_message_box .close {
+  font-size: 30px;
+  opacity: 0.2;
+  position: absolute;
+  top: 11px;
+  right: 15px;
+  transition: 0.25s ease;
+}
+a.h-alert-link{
+  color:#FFF;
+  font-weight:bold;
+}
+
+a.h-alert-link:hover{
+  color:#7EDC84;
+}
+// .icon-bell {
+//   display: block;
+//   width: 53px;
+//   height: 57px;
+//   float: right;
+//   margin-top: 16px;
+// }
+// .icon-big-news {
+//   display: block;
+//   width: 53px;
+//   height: 57px;
+//   float: right;
+//   margin-top: 16px;
+// }
+// .icon-tech-issues {
+//   display: block;
+//   width: 58px;
+//   height: 57px;
+//   float: right;
+//   margin-top: 16px;
+// }

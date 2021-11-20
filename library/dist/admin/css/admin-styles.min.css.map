@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "admin-styles.min.css",
+	"sources": [
+		"../../../admin/scss/admin-styles.scss"
+	],
+	"names": [],
+	"mappings": "AACA,AAAA,cAAc,CAAC;EACd,UAAU,EAAE,MAAM;EAClB,OAAO,EAAE,IAAI,GACb;;AAED,AAAA,cAAc,CAAC;EACd,MAAM,EAAE,KAAK,GACb"
+}

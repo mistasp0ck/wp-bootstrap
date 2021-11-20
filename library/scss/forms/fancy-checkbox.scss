@@ -1,0 +1,361 @@
+// ul {
+// padding:0px;
+// }
+// li {
+// list-style:none;
+// display:block;
+// padding:5px;
+// }
+.gfield_checkbox,
+form {
+  li,& {
+    position: relative;
+    padding-left:40px;
+    label {
+      &:after {
+        content:"";
+        background:#c3c3c3;
+        width:27px;
+        height:27px;
+        display:block;
+        position: absolute;
+        left:0;
+        top:0;
+        border-radius:3px;
+        z-index: 0;
+      }
+      &:before {
+        content:"";
+        display:block;
+        position: absolute;
+        width: 6px;
+        height: 15px;
+        border: solid #fff;
+        border-width: 0 3px 3px 0;
+        left: 9px;
+        top: 4px;
+        transform: rotate(45deg);
+        opacity:0;
+        z-index:1;
+        transition:all 100ms;
+      }
+    }
+  }
+
+}
+.radio label,
+.checkbox label {
+  margin-bottom: 10px;
+}
+.checkbox input[type="checkbox"] {
+  position: relative;
+  display: inline-block;
+  float: left;
+  left: 0;
+}
+
+input[type="checkbox"] {
+  opacity:0;
+  outline:none;
+  z-index:100;
+  width:27px;
+  height:27px;
+  top:0;
+  left:0;
+  position: absolute;
+  appearance: none;
+  cursor: pointer;
+  + label {
+    cursor: pointer;
+    &:after {
+      content: "";
+      background: #E6E6E6;
+      width: 40px;
+      height: 40px;
+      transition: all 35ms;
+    }
+  }
+  &:checked + label {
+    &:before {
+      opacity:1;
+      top: 3px;
+    }
+    &:after {
+      background: #e28423;
+    }
+  }
+
+}
+.checked {
+  &:before {
+    opacity:1;
+    top: 3px;
+  }
+  &:after {
+    background: #e28423;
+  }
+}
+
+/* Hide the browser's default checkbox */
+input[type="checkbox"]{
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+
+}
+
+/* Create a custom checkbox */
+label.checkbox-inline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  &:after {
+    content:"";
+    background: #E28524;
+    width:27px;
+    height:27px;
+    display:block;
+    position: absolute;
+    left:0;
+    top:0;
+    border-radius:3px;
+    z-index: 0;
+  }
+  &:before {
+    @extend %fa-icon;
+    @extend .fas;
+    content: fa-content($fa-var-check);
+
+    display:block;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    font-size: 25px;
+    left: 9px;
+    top: 6px;
+    @media (max-width: 767px) {
+      top: 11px;
+    }
+    // transform: rotate(45deg);
+    opacity:1;
+    z-index:0;
+    transition:all 35ms;
+  }
+
+
+}
+
+label.checkbox-inline label:after {
+  display: inline-block;
+  position: relative;
+  border-radius: 3px;
+  float: left;
+  margin-right: 10px;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+// ul {
+//   padding:0px;
+// }
+// li {
+//   list-style:none;
+//   display:block;
+//   padding:5px;
+// }
+// .gform_wrapper .schedule-appointment ul.gfield_radio li{
+//   // width: 50%;
+//   float: left;
+
+// }
+
+// .gform_wrapper .schedule-appointment ul.gfield_radio li input[type=radio]:checked+label {
+//   font-weight: 500;
+//   background: #E28524;
+//   color: #fff;
+// }
+
+// .gform_wrapper .schedule-appointment ul.gfield_radio li input[type=radio]:checked {
+
+// }
+// .gform_wrapper .schedule-appointment .gfield_radio li label {
+//   max-width: 100%;
+// }
+// .gform_wrapper .schedule-appointment .gfield_radio li label {
+//   margin: 0;
+// }
+
+// body .gform_wrapper .schedule-appointment ul li.field_description_below div.ginput_container_radio {
+//   @media (max-width: 767px) {
+//     margin-top: 1px;
+//     margin-bottom: 0;
+//     overflow: hidden;
+//   }
+// }
+
+
+
+// .gform_wrapper .schedule-appointment ul.gfield_radio {
+//     @media (max-width: 767px) {
+//       margin-left: -15px;
+//       margin-right: -15px;
+//     }
+//     li {
+//       @media (max-width: 767px) {
+//         width: 50%;
+//         padding-left: 15px !important;
+//         padding-right: 15px !important;
+//         // portrait above iphone5
+
+//       }
+//       @media (min-width: 569px) and (max-width: 767px) {
+//         padding-right: 0px !important;
+//       }
+//       @media (min-width: 321px) and (max-width: 767px) {
+//         width: auto;
+//       }
+//       &:first-child {
+//         margin-right: 15px;
+//         @media (max-width: 767px) {
+//           margin-right: 0px;
+//           padding-right: 5px !important;
+//         }
+//       }
+//       &:last-child {
+//         margin-right: 15px;
+//         @media (max-width: 767px) {
+//           margin-right: 0px;
+//           padding-left: 5px !important;
+//         }
+//       }
+//       position: relative;
+
+//       // padding-left:40px;
+//       // width: 193px;
+//       label {
+//         background: #E6E6E6;
+//         color: #CDCDCD;
+//         padding: 8px 15px 8px 46px;
+//         @media (max-width: 767px) {
+//           padding: 8px 15px 8px 43px;
+//         }
+//         // width: 193px;
+//         font-size: 15px;
+//         font-weight: 500;
+//         letter-spacing: 0.7px;
+//         border-radius: 5px;
+//         letter-spacing: 0;
+
+//         @media (max-width: 767px) {
+//           font-size: 14px;
+//           line-height: 16px;
+//           width: 100%;
+//           position: relative;
+//           width: 150px;
+//         }
+//         // portrait above iphone5
+//         @media (min-width: 569px) and (max-width: 767px) {
+//           width: 144px;
+//         }
+
+//         &:after {
+//           // content:"";
+//           // background: #E28524;
+//           // width:27px;
+//           // height:27px;
+//           // display:block;
+//           // position: absolute;
+//           // left:0;
+//           // top:0;
+//           // border-radius:3px;
+//           // z-index: 0;
+//         }
+//         &:before {
+//           @extend %fa-icon;
+//           @extend .fas;
+//           content: fa-content($fa-var-check);
+
+//           display:block;
+//           position: absolute;
+//           width: 25px;
+//           height: 25px;
+//           font-size: 25px;
+//           left: 9px;
+//           top: 6px;
+//           @media (max-width: 767px) {
+//             top: 11px;
+//           }
+//           // transform: rotate(45deg);
+//           opacity:1;
+//           z-index:0;
+//           transition:all 35ms;
+//         }
+//       }
+//       @media (max-width: 767px) {
+//         padding-left: 15px;
+//         padding-right: 15px;
+//       }
+//     }
+
+//   }
+
+  input[type="radio"] {
+    opacity:0;
+    outline:none;
+    z-index:100;
+    width:27px;
+    height:27px;
+    top:0;
+    left:0;
+    position: absolute;
+    appearance: none;
+    cursor: pointer;
+    + label {
+      cursor: pointer;
+    }
+    &:checked + label {
+      &:before {
+        opacity:1;
+        top: 3px;
+      }
+    }
+  }  

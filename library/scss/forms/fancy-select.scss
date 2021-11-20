@@ -1,0 +1,135 @@
+@media (min-width: 641px){
+  /*the container must be positioned relative:*/
+  .navbar-form .custom-select {
+    position: relative;
+    position: absolute;
+    top: 0;
+    right: 47px;
+    width: 103px;
+    @media (min-width: 768px) {
+      right: 75px;
+      width: 117px;
+    }
+    display: table;
+  }
+  .hero-form .custom-select {
+    right: 66px;
+    width: 103px;
+    @media (min-width: 768px) {
+      right: 95px;
+    }
+  }
+
+  .navbar-form .custom-select select {
+    display: none; /*hide original SELECT element:*/
+  }
+}
+.navbar-form .select-selected {
+  // background-color: DodgerBlue;
+  border: none;
+  border-radius: 0px;
+  border-left: 1px solid #CDCDCD;
+  height: 52px;
+  @media (min-width: 768px) {
+    height: 60px;
+  }
+  // background: url(../../../library/img/chev-down.svg) no-repeat;
+  
+}
+.navbar-form .select-selected:after {
+  content: '';
+}
+.navbar-form .select-selected.select-arrow-active:after {
+  content: ''; 
+}
+
+.navbar-form .select-selected.select-arrow-active {
+  border-radius: 0px;
+}
+.navbar-form .select-items {
+  margin-right: 0;
+}
+
+.navbar-form .select-selected:before {
+  position: absolute;
+  @extend %fa-icon;
+  @extend .fas;
+  content: fa-content($fa-var-chevron-down);
+
+  right: 0;
+  top: 40%;
+  color: #747474;
+  font-size: 12px;
+}
+
+
+
+.navbar-form .select-selected:before {
+  position: absolute;
+  @extend %fa-icon;
+  @extend .fas;
+  content: fa-content($fa-var-chevron-down);
+  right: 9px;
+  top: 41%;
+  color: #747474;
+  font-size: 12px;
+  transition: all 0.45s ease;
+}
+/*point the arrow upwards when the select box is open (active):*/
+.navbar-form .select-selected.select-arrow-active:before {
+  transform: rotate(180deg);
+  // position: absolute;
+  // @include fa-icon();
+  // content: $fa-var-chevron-down;
+  // right: 13px;
+  // top: 40%;
+  // color: #747474;
+  // font-size: 12px;
+}
+/*style the items (options), including the selected item:*/
+.navbar-form .select-items div,.navbar-form .select-selected {
+  color: #ffffff;
+  padding: 8px 16px 8px 8px;
+  cursor: pointer;
+  font-weight: 400;
+  color: #747474;
+  letter-spacing: 0;
+  font-size: 16px;
+  line-height: 17px;  
+  @media (min-width: 768px) {
+    font-size: 18px;
+    line-height: 19px; 
+    padding: 10px 16px 10px 8px; 
+  }
+}
+.navbar-form .select-selected {
+  display: table-cell;
+  vertical-align: middle;
+}
+.hero-form .navbar-form .select-selected {
+  height: 52px;
+  @media (min-width: 768px) {
+    height: 70px;
+  }
+}
+/*style items (options):*/
+.navbar-form .select-items {
+  position: absolute;
+  background-color: #fff;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  border-radius: 0 0 5px 5px;
+  border-left: 1px solid #CDCDCD;
+  border-bottom: 1px solid #CDCDCD;
+
+  box-shadow: 2px 4px 5px 0px rgba(0, 51, 74, 0.42);
+}
+/*hide the items when the select box is closed:*/
+.navbar-form .select-hide {
+  display: none;
+}
+.navbar-form .select-items div:hover,.navbar-form  .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
