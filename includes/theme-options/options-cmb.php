@@ -447,7 +447,7 @@ class WpbsCustom_Admin {
  * @return wpbs_Admin object
  */
 function wpbs_admin() {
-	return wpbs_Admin::get_instance();
+	return WpbsCustom_Admin::get_instance();
 }
 
 /**

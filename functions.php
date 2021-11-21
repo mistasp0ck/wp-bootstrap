@@ -2,9 +2,9 @@
 
 // Parent Theme 
 require_once get_template_directory() . '/includes/class-tgm-plugin-activation.php';
-add_action( 'tgmpa_register', 'wp_bootstrap_register_required_plugins' );
-if( !function_exists( "wp_bootstrap_register_required_plugins" ) ) {  
-  function wp_bootstrap_register_required_plugins() {
+add_action( 'tgmpa_register', 'wpbs_register_required_plugins' );
+if( !function_exists( "wpbs_register_required_plugins" ) ) {  
+  function wpbs_register_required_plugins() {
     /*
      * Array of plugin arrays. Required keys are name and slug.
      * If the source is NOT from the .org repo, then source is also required.
@@ -15,24 +15,6 @@ if( !function_exists( "wp_bootstrap_register_required_plugins" ) ) {
         'name'      => 'CMB2',
         'slug'      => 'cmb2',
         'required'  => true,
-      ),
-      array(
-        'name'  => 'WPBakery Page Builder', // The plugin name
-        'slug'  => 'js_composer', // The plugin slug (typically the folder name)
-        'source'  => get_template_directory() . '/pkg/js_composer.zip', // The plugin source
-        'required'  => true, // If false, the plugin is only 'recommended' instead of required
-        'version' => '6.2.0', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
-        'force_activation'  => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
-        'force_deactivation'  => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
-      ),
-      array(
-        'name'  => 'FS Theme Extensions', // The plugin name
-        'slug'  => 'wpbootstrap-theme-extensions', // The plugin slug (typically the folder name)
-        'source'  => get_template_directory() . '/pkg/wpbootstrap-theme-extensions-master.zip', // The plugin source
-        'required'  => true, // If false, the plugin is only 'recommended' instead of required
-        'version' => '1.0', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
-        'force_activation'  => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
-        'force_deactivation'  => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
       )
     );
     $config = array(
@@ -58,18 +40,18 @@ $locale_file = TEMPLATEPATH . "/languages/$locale.php";
 if ( is_readable( $locale_file ) ) require_once( $locale_file );
 
 /************* Include all Files from includes ********************/
-if ( ! function_exists('wp_bootstrap_init_includes')) {
-  function wp_bootstrap_init_includes() {
+if ( ! function_exists('wpbs_init_includes')) {
+  function wpbs_init_includes() {
     $setup = TEMPLATEPATH . "/includes/theme_setup.php";
     if ( is_readable( $setup ) ) require_once( $setup );
   }
 }
-add_action( 'init', 'wp_bootstrap_init_includes', 20 );
+add_action( 'init', 'wpbs_init_includes', 20 );
 
-add_action( 'admin_enqueue_scripts', 'wp_bootstrap_admin_media' );   
+add_action( 'admin_enqueue_scripts', 'wpbs_admin_media' );   
 
-if ( ! function_exists( 'wp_bootstrap_admin_media' ) ) {
-  function wp_bootstrap_admin_media() {
+if ( ! function_exists( 'wpbs_admin_media' ) ) {
+  function wpbs_admin_media() {
     global $post;
 
     wp_enqueue_script('admin-scripts', get_template_directory_uri() . '/library/dist/admin/js/admin-scripts.min.js', array('jquery'), '1.0' );
@@ -79,8 +61,8 @@ if ( ! function_exists( 'wp_bootstrap_admin_media' ) ) {
 }
 
 // Clean up the WordPress Head
-if( !function_exists( "wp_bootstrap_head_cleanup" ) ) {  
-  function wp_bootstrap_head_cleanup() {
+if( !function_exists( "wpbs_head_cleanup" ) ) {  
+  function wpbs_head_cleanup() {
     // remove header links
     remove_action( 'wp_head', 'feed_links_extra', 3 );                    // Category Feeds
     remove_action( 'wp_head', 'feed_links', 2 );                          // Post and Comment Feeds
@@ -94,26 +76,26 @@ if( !function_exists( "wp_bootstrap_head_cleanup" ) ) {
   }
 }
 // Launch operation cleanup
-add_action( 'init', 'wp_bootstrap_head_cleanup' );
+add_action( 'init', 'wpbs_head_cleanup' );
 
 // remove WP version from RSS
-if( !function_exists( "wp_bootstrap_rss_version" ) ) {  
-  function wp_bootstrap_rss_version() { return ''; }
+if( !function_exists( "wpbs_rss_version" ) ) {  
+  function wpbs_rss_version() { return ''; }
 }
-add_filter( 'the_generator', 'wp_bootstrap_rss_version' );
+add_filter( 'the_generator', 'wpbs_rss_version' );
 
 // Remove the […] in a Read More link
-if( !function_exists( "wp_bootstrap_excerpt_more" ) ) {  
-  function wp_bootstrap_excerpt_more( $more ) {
+if( !function_exists( "wpbs_excerpt_more" ) ) {  
+  function wpbs_excerpt_more( $more ) {
     global $post;
     return '...  <a href="'. get_permalink($post->ID) . '" class="more-link" title="Read '.get_the_title($post->ID).'">Read more &raquo;</a>';
   }
 }
-add_filter('excerpt_more', 'wp_bootstrap_excerpt_more');
+add_filter('excerpt_more', 'wpbs_excerpt_more');
 
 // Add WP 3+ Functions & Theme Support
-if( !function_exists( "wp_bootstrap_theme_support" ) ) {  
-  function wp_bootstrap_theme_support() {
+if( !function_exists( "wpbs_theme_support" ) ) {  
+  function wpbs_theme_support() {
     add_theme_support( 'post-thumbnails' );      // wp thumbnails (sizes handled in functions.php)
     set_post_thumbnail_size( 125, 125, true );   // default thumb size
     add_theme_support( 'custom-background' );  // wp custom background
@@ -145,10 +127,10 @@ if( !function_exists( "wp_bootstrap_theme_support" ) ) {
   }
 }
 // launching this stuff after theme setup
-add_action( 'after_setup_theme','wp_bootstrap_theme_support' );
+add_action( 'after_setup_theme','wpbs_theme_support' );
 
-if( !function_exists( "wp_bootstrap_main_nav" ) ) {
-  function wp_bootstrap_main_nav() {
+if( !function_exists( "wpbs_main_nav" ) ) {
+  function wpbs_main_nav() {
     // Display the WordPress menu if available
     wp_nav_menu( 
       array( 
@@ -157,35 +139,35 @@ if( !function_exists( "wp_bootstrap_main_nav" ) ) {
         'menu_id' => 'navigation',
         'theme_location' => 'main_nav', /* where in the theme it's assigned */
         'container' => 'false', /* container class */
-        'fallback_cb' => 'wp_bootstrap_main_nav_fallback', /* menu fallback */
+        'fallback_cb' => 'wpbs_main_nav_fallback', /* menu fallback */
         'walker' => new Bootstrap_walker()
       )
     );
   }
 }
-if( !function_exists( "wp_bootstrap_footer_links" ) ) { 
-  function wp_bootstrap_footer_links() { 
+if( !function_exists( "wpbs_footer_links" ) ) { 
+  function wpbs_footer_links() { 
     // Display the WordPress menu if available
     wp_nav_menu(
       array(
         'menu' => 'footer_links', /* menu name */
         'theme_location' => 'footer_links', /* where in the theme it's assigned */
         'container_class' => 'footer-links clearfix', /* container class */
-        'fallback_cb' => 'wp_bootstrap_footer_links_fallback' /* menu fallback */
+        'fallback_cb' => 'wpbs_footer_links_fallback' /* menu fallback */
       )
     );
   }
 }
 // this is the fallback for header menu
-if( !function_exists( "wp_bootstrap_main_nav_fallback" ) ) { 
-  function wp_bootstrap_main_nav_fallback() { 
+if( !function_exists( "wpbs_main_nav_fallback" ) ) { 
+  function wpbs_main_nav_fallback() { 
     /* you can put a default here if you like */ 
   }
 }
 
 // this is the fallback for footer menu
-if( !function_exists( "wp_bootstrap_footer_links" ) ) { 
-  function wp_bootstrap_footer_links() { 
+if( !function_exists( "wpbs_footer_links" ) ) { 
+  function wpbs_footer_links() { 
     /* you can put a default here if you like */ 
   }
 }
@@ -194,8 +176,8 @@ if( !function_exists( "wp_bootstrap_footer_links" ) ) {
 // require_once('library/admin.php');         // custom admin functions
 
 // Custom Backend Footer
-// add_filter('admin_footer_text', 'wp_bootstrap_custom_admin_footer');
-function wp_bootstrap_custom_admin_footer() {
+// add_filter('admin_footer_text', 'wpbs_custom_admin_footer');
+function wpbs_custom_admin_footer() {
 	echo '<span id="footer-thankyou">Developed by <a href="http://tonystaffiero.com" target="_blank">Tony Staffiero</a></span>';
 }
 
@@ -233,8 +215,8 @@ you like. Enjoy!
 /************* ACTIVE SIDEBARS ********************/
 
 // Sidebars & Widgetizes Areas
-if( !function_exists( "wp_bootstrap_register_sidebars" ) ) {  
-  function wp_bootstrap_register_sidebars() {
+if( !function_exists( "wpbs_register_sidebars" ) ) {  
+  function wpbs_register_sidebars() {
     register_sidebar(array(
     	'id' => 'sidebar1',
     	'name' => 'Main Sidebar',
@@ -299,7 +281,7 @@ if( !function_exists( "wp_bootstrap_register_sidebars" ) ) {
     */
   } // don't remove this bracket!
 }
-add_action( 'widgets_init', 'wp_bootstrap_register_sidebars' );
+add_action( 'widgets_init', 'wpbs_register_sidebars' );
 
 /**
  * Check whether we are on this page or a sub page
@@ -324,8 +306,8 @@ function page_is_tree( $pid ) {      // $pid = The ID of the page we're looking 
     return $is_tree;  // we arn't at the page, and the page is not an ancestor
 }
 // Fix for Shortcodes in Search Results using Relevanssi
-add_filter('relevanssi_pre_excerpt_content', 'wp_bootstrap_trim_vc_shortcodes');
-function wp_bootstrap_trim_vc_shortcodes($content) {
+add_filter('relevanssi_pre_excerpt_content', 'wpbs_trim_vc_shortcodes');
+function wpbs_trim_vc_shortcodes($content) {
     $content = preg_replace('/\[\/?vc.*?\]/', '', $content);
     $content = preg_replace('/\[\/?mk.*?\]/', '', $content);
     return $content;
@@ -356,8 +338,8 @@ function service_page_callback(){
 
 /************* COMMENT LAYOUT *********************/
 
-if( !function_exists( "wp_bootstrap_comments" ) ) {  
-  function wp_bootstrap_comments($comment, $args, $depth) {
+if( !function_exists( "wpbs_comments" ) ) {  
+  function wpbs_comments($comment, $args, $depth) {
      $GLOBALS['comment'] = $comment; ?>
   	<li <?php comment_class(); ?>>
   		<article id="comment-<?php comment_ID(); ?>" class="clearfix">
@@ -386,8 +368,8 @@ if( !function_exists( "wp_bootstrap_comments" ) ) {
   <?php
   } // don't remove this bracket!
 }
-if( !function_exists( "get_wp_bootstrap_comment_form" ) ) {  
-  function get_wp_bootstrap_comment_form () {
+if( !function_exists( "get_wpbs_comment_form" ) ) {  
+  function get_wpbs_comment_form () {
 
     $args = array(
       'id_form'           => 'commentform',
@@ -466,10 +448,10 @@ if( !function_exists( "list_pings" ) ) {
 
 /****************** password protected post form *****/
 
-add_filter( 'the_password_form', 'wp_bootstrap_custom_password_form' );
+add_filter( 'the_password_form', 'wpbs_custom_password_form' );
 
-if( !function_exists( "wp_bootstrap_custom_password_form" ) ) { 
-  function wp_bootstrap_custom_password_form() {
+if( !function_exists( "wpbs_custom_password_form" ) ) { 
+  function wpbs_custom_password_form() {
   	global $post;
   	$label = 'pwbox-'.( empty( $post->ID ) ? rand() : $post->ID );
   	$o = '<div class="clearfix"><form class="protected-post-form" action="' . get_option('siteurl') . '/wp-login.php?action=postpass" method="post">
@@ -483,10 +465,10 @@ if( !function_exists( "wp_bootstrap_custom_password_form" ) ) {
 
 /*********** update standard wp tag cloud widget so it looks better ************/
 
-add_filter( 'widget_tag_cloud_args', 'wp_bootstrap_my_widget_tag_cloud_args' );
+add_filter( 'widget_tag_cloud_args', 'wpbs_my_widget_tag_cloud_args' );
 
-if( !function_exists( "wp_bootstrap_my_widget_tag_cloud_args" ) ) { 
-  function wp_bootstrap_my_widget_tag_cloud_args( $args ) {
+if( !function_exists( "wpbs_my_widget_tag_cloud_args" ) ) { 
+  function wpbs_my_widget_tag_cloud_args( $args ) {
   	$args['number'] = 20; // show less tags
   	$args['largest'] = 9.75; // make largest and smallest the same - i don't like the varying font-size look
   	$args['smallest'] = 9.75;
@@ -495,8 +477,8 @@ if( !function_exists( "wp_bootstrap_my_widget_tag_cloud_args" ) ) {
   }
 }
 // filter tag clould output so that it can be styled by CSS
-if( !function_exists( "wp_bootstrap_add_tag_class" ) ) { 
-  function wp_bootstrap_add_tag_class( $taglinks ) {
+if( !function_exists( "wpbs_add_tag_class" ) ) { 
+  function wpbs_add_tag_class( $taglinks ) {
       $tags = explode('</a>', $taglinks);
       $regex = "#(.*tag-link[-])(.*)(' title.*)#e";
 
@@ -510,12 +492,12 @@ if( !function_exists( "wp_bootstrap_add_tag_class" ) ) {
   }
 }
 
-add_action( 'wp_tag_cloud', 'wp_bootstrap_add_tag_class' );
+add_action( 'wp_tag_cloud', 'wpbs_add_tag_class' );
 
-add_filter( 'wp_tag_cloud','wp_bootstrap_wp_tag_cloud_filter', 10, 2) ;
+add_filter( 'wp_tag_cloud','wpbs_wp_tag_cloud_filter', 10, 2) ;
 
-if( !function_exists( "wp_bootstrap_wp_tag_cloud_filter" ) ) { 
-  function wp_bootstrap_wp_tag_cloud_filter( $return, $args )
+if( !function_exists( "wpbs_wp_tag_cloud_filter" ) ) { 
+  function wpbs_wp_tag_cloud_filter( $return, $args )
   {
     return '<div id="tag-cloud">' . $return . '</div>';
   }
@@ -525,8 +507,8 @@ if( !function_exists( "wp_bootstrap_wp_tag_cloud_filter" ) ) {
 add_filter( 'widget_text', 'do_shortcode' );
 
 // Disable jump in 'read more' link
-if( !function_exists( "wp_bootstrap_remove_more_jump_link" ) ) { 
-  function wp_bootstrap_remove_more_jump_link( $link ) {
+if( !function_exists( "wpbs_remove_more_jump_link" ) ) { 
+  function wpbs_remove_more_jump_link( $link ) {
   	$offset = strpos($link, '#more-');
   	if ( $offset ) {
   		$end = strpos( $link, '"',$offset );
@@ -537,7 +519,7 @@ if( !function_exists( "wp_bootstrap_remove_more_jump_link" ) ) {
   	return $link;
   }
 }
-add_filter( 'the_content_more_link', 'wp_bootstrap_remove_more_jump_link' );
+add_filter( 'the_content_more_link', 'wpbs_remove_more_jump_link' );
 
 // Add Posttypes
 add_action( 'after_setup_theme', 'create_posttype' ); 
@@ -835,18 +817,18 @@ if( !function_exists( "create_posttype" ) ) {
 
 
 // Add thumbnail class to thumbnail links
-if( !function_exists( "wp_bootstrap_add_class_attachment_link" ) ) { 
-  function wp_bootstrap_add_class_attachment_link( $html ) {
+if( !function_exists( "wpbs_add_class_attachment_link" ) ) { 
+  function wpbs_add_class_attachment_link( $html ) {
       $postid = get_the_ID();
       $html = str_replace( '<a','<a class="thumbnail"',$html );
       return $html;
   }
 }
-add_filter( 'wp_get_attachment_link', 'wp_bootstrap_add_class_attachment_link', 10, 1 );
+add_filter( 'wp_get_attachment_link', 'wpbs_add_class_attachment_link', 10, 1 );
 
 // Add lead class to first paragraph
-if( !function_exists( "wp_bootstrap_first_paragraph" ) ) { 
-  function wp_bootstrap_first_paragraph( $content ){
+if( !function_exists( "wpbs_first_paragraph" ) ) { 
+  function wpbs_first_paragraph( $content ){
       global $post;
 
       // if we're on the homepage, don't add the lead class to the first paragraph of text
@@ -856,7 +838,7 @@ if( !function_exists( "wp_bootstrap_first_paragraph" ) ) {
           return preg_replace('/<p([^>]+)?>/', '<p$1 class="lead">', $content, 1);
   }
 }
-// add_filter( 'the_content', 'wp_bootstrap_first_paragraph' );
+// add_filter( 'the_content', 'wpbs_first_paragraph' );
 
 // Menu output mods
 class Bootstrap_walker extends Walker_Nav_Menu{
@@ -940,17 +922,17 @@ class Bootstrap_walker extends Walker_Nav_Menu{
 
 add_editor_style('editor-style.css');
 
-add_filter('nav_menu_submenu_css_class', 'wp_bootstrap_nav_menu_submenu_css_class',10,3);
+add_filter('nav_menu_submenu_css_class', 'wpbs_nav_menu_submenu_css_class',10,3);
 
-if( !function_exists( "wp_bootstrap_nav_menu_submenu_css_class" ) ) { 
-  function wp_bootstrap_nav_menu_submenu_css_class($classes, $args, $depth) {
+if( !function_exists( "wpbs_nav_menu_submenu_css_class" ) ) { 
+  function wpbs_nav_menu_submenu_css_class($classes, $args, $depth) {
     array_push($classes, 'dropdown-menu shadow');
     return $classes;
   }
 }
 
-if( !function_exists( "wp_bootstrap_add_active_class" ) ) { 
-  function wp_bootstrap_add_active_class($classes, $item) {
+if( !function_exists( "wpbs_add_active_class" ) ) { 
+  function wpbs_add_active_class($classes, $item) {
   	if( $item->menu_item_parent == 0 && in_array('current-menu-item', $classes) ) {
       $classes[] = "active";
   	}
@@ -960,11 +942,11 @@ if( !function_exists( "wp_bootstrap_add_active_class" ) ) {
 }
 
 // Add Twitter Bootstrap's standard 'active' class name to the active nav link item
-add_filter('nav_menu_css_class', 'wp_bootstrap_add_active_class', 10, 2 );
+add_filter('nav_menu_css_class', 'wpbs_add_active_class', 10, 2 );
 
 // enqueue styles
-if( !function_exists("wp_bootstrap_theme_styles") ) {  
-    function wp_bootstrap_theme_styles() { 
+if( !function_exists("wpbs_theme_styles") ) {  
+    function wpbs_theme_styles() { 
 
       wp_enqueue_style('lightbox', get_template_directory_uri() . '/bower_components/lity/dist/lity.min.css', '1.6.5');
 
@@ -979,11 +961,11 @@ if( !function_exists("wp_bootstrap_theme_styles") ) {
       // wp_enqueue_style( 'wpbootstrap-style' );
     }
 }
-add_action( 'wp_enqueue_scripts', 'wp_bootstrap_theme_styles' );
+add_action( 'wp_enqueue_scripts', 'wpbs_theme_styles' );
 
 // enqueue javascript
-if( !function_exists( "wp_bootstrap_theme_js" ) ) {  
-  function wp_bootstrap_theme_js(){
+if( !function_exists( "wpbs_theme_js" ) ) {  
+  function wpbs_theme_js(){
 
     if ( !is_admin() ){
       if ( is_singular() AND comments_open() AND ( get_option( 'thread_comments' ) == 1) ) 
@@ -1016,16 +998,16 @@ if( !function_exists( "wp_bootstrap_theme_js" ) ) {
 
     wp_enqueue_script( 'wpbootstrap-js' );
 
-    wp_localize_script( 'wpbootstrap-js', 'wp_bootstrap_vars', array(
-          'wp_bootstrap_nonce' => wp_create_nonce( 'wp_bootstrap_nonce' ), // Create nonce which we later will use to verify AJAX request
-          'wp_bootstrap_ajax_url' => admin_url( 'admin-ajax.php' ),
+    wp_localize_script( 'wpbootstrap-js', 'wpbs_vars', array(
+          'wpbs_nonce' => wp_create_nonce( 'wpbs_nonce' ), // Create nonce which we later will use to verify AJAX request
+          'wpbs_ajax_url' => admin_url( 'admin-ajax.php' ),
 
         )
     );   
 
     $variables_array = array( 
       'templateUrl' => get_stylesheet_directory_uri(),
-      'logos' => wp_bootstrap_logo_options()
+      'logos' => wpbs_logo_options()
     );
     //after wp_enqueue_script
     wp_localize_script( 'wpbootstrap-js', 'url', $variables_array );
@@ -1034,21 +1016,21 @@ if( !function_exists( "wp_bootstrap_theme_js" ) ) {
 
   }
 }
-add_action( 'wp_enqueue_scripts', 'wp_bootstrap_theme_js' );
+add_action( 'wp_enqueue_scripts', 'wpbs_theme_js' );
 
 
-if( !function_exists("wp_bootstrap_logo_options") ) {  
-  function wp_bootstrap_logo_options() { 
+if( !function_exists("wpbs_logo_options") ) {  
+  function wpbs_logo_options() { 
     $options = array ();
 
-    if (wpbs_get_option( 'wp_bootstrap_logo_light' )) {
-      $options['light'] = wpbs_get_option( 'wp_bootstrap_logo_light' );
+    if (wpbs_get_option( 'wpbs_logo_light' )) {
+      $options['light'] = wpbs_get_option( 'wpbs_logo_light' );
     }
-    if (wpbs_get_option( 'wp_bootstrap_logo_dark' )) {
-      $options['dark'] = wpbs_get_option( 'wp_bootstrap_logo_dark' );
+    if (wpbs_get_option( 'wpbs_logo_dark' )) {
+      $options['dark'] = wpbs_get_option( 'wpbs_logo_dark' );
     }
-    if (wpbs_get_option( 'wp_bootstrap_logo_trans' )) {
-      $options['trans'] = wpbs_get_option( 'wp_bootstrap_logo_trans' );
+    if (wpbs_get_option( 'wpbs_logo_trans' )) {
+      $options['trans'] = wpbs_get_option( 'wpbs_logo_trans' );
     }
     return $options;
   }
@@ -1056,8 +1038,8 @@ if( !function_exists("wp_bootstrap_logo_options") ) {
 }
 
 // Get <head> <title> to behave like other themes
-if( !function_exists( "wp_bootstrap_wp_title" ) ) { 
-  function wp_bootstrap_wp_title( $title, $sep ) {
+if( !function_exists( "wpbs_wp_title" ) ) { 
+  function wpbs_wp_title( $title, $sep ) {
     global $paged, $page;
 
     if ( is_feed() ) {
@@ -1081,11 +1063,11 @@ if( !function_exists( "wp_bootstrap_wp_title" ) ) {
     return $title;
   }
 }
-add_filter( 'wp_title', 'wp_bootstrap_wp_title', 10, 2 );
+add_filter( 'wp_title', 'wpbs_wp_title', 10, 2 );
 
-// Related Posts Function (call using wp_bootstrap_related_posts(); )
-if( !function_exists( "wp_bootstrap_related_posts" ) ) { 
-  function wp_bootstrap_related_posts() {
+// Related Posts Function (call using wpbs_related_posts(); )
+if( !function_exists( "wpbs_related_posts" ) ) { 
+  function wpbs_related_posts() {
     echo '<ul id="bones-related-posts">';
     global $post;
     $tags = wp_get_post_tags($post->ID);
@@ -1109,9 +1091,9 @@ if( !function_exists( "wp_bootstrap_related_posts" ) ) {
     echo '</ul>';
   }
 }
-if( !function_exists( "wp_bootstrap_page_navi" ) ) { 
+if( !function_exists( "wpbs_page_navi" ) ) { 
   // Numeric Page Navi (built into the theme by default)
-  function wp_bootstrap_page_navi($before = '', $after = '') {
+  function wpbs_page_navi($before = '', $after = '') {
     global $wpdb, $wp_query;
     $request = $wp_query->request;
     $posts_per_page = intval(get_query_var('posts_per_page'));
@@ -1171,17 +1153,17 @@ if( !function_exists( "wp_bootstrap_page_navi" ) ) {
 }
 
 // Remove <p> tags from around images
-// function wp_bootstrap_filter_ptags_on_images( $content ){
+// function wpbs_filter_ptags_on_images( $content ){
 //   return preg_replace( '/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content );
 // }
-// add_filter( 'the_content', 'wp_bootstrap_filter_ptags_on_images' );
+// add_filter( 'the_content', 'wpbs_filter_ptags_on_images' );
 
 // Script for getting posts
 if( !function_exists( "ajax_filter_get_posts" ) ) { 
 function ajax_filter_get_posts( $taxonomy ) {
  
   // Verify nonce
-  if( !isset( $_POST['wp_bootstrap_nonce'] ) || !wp_verify_nonce( $_POST['wp_bootstrap_nonce'], 'wp_bootstrap_nonce' ) )
+  if( !isset( $_POST['wpbs_nonce'] ) || !wp_verify_nonce( $_POST['wpbs_nonce'], 'wpbs_nonce' ) )
     die('Permission denied');
  
   $taxonomy = $_POST['taxonomy'];
@@ -1312,13 +1294,13 @@ function get_editor_output( $meta_key, $post_id = 0 ) {
 
 add_action('wp_head', 'scripts_header', 0);
 function scripts_header() { 
-  if($header_scripts = wpbs_get_option('wp_bootstrap_scripts_header')) {
+  if($header_scripts = wpbs_get_option('wpbs_scripts_header')) {
     echo $header_scripts;
   } 
 }
 add_action('after_body', 'scripts_body');
 function scripts_body() { 
-  if($body_scripts = wpbs_get_option('wp_bootstrap_scripts_body')) {
+  if($body_scripts = wpbs_get_option('wpbs_scripts_body')) {
     echo $body_scripts;
   } 
 }
