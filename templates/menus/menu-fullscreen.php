@@ -10,7 +10,7 @@
     </form>
   <?php } ?>
 
-  <div id="sidebar-wrapper" class="navbar navbar-inverse sidebar-nav" role="navigation">
+  <div id="sidebar-wrapper" class="navbar navbar-dark sidebar-nav" role="navigation">
     <?php wpbs_main_nav(); // Adjust using Menus in Wordpress Admin ?>
   </div>
 </div>

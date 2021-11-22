@@ -13,9 +13,10 @@ $header_class = '';
 <header role="banner">
     <?php error_log($options['menuclasses']); ?>
   <div class="navbar navbar-expand-md navbar-default<?php echo $options['menuclasses']; ?> <?php echo wpbs_get_option( 'wpbs_nav_hamburger' ) ?>" data-spy="<?php echo $options['affix']; ?>" data-offset-top="46">
-    <div class="container">
+    <div class="container navbar-header">
     
-      <div class="navbar-header">
+      <!-- <div class="navbar-header"> -->
+        <?php get_template_part ( 'templates/menus/menu', 'branding' ) ?>
         <?php if($sidebar === true) { ?> 
           <button type="button" class="hamburger is-closed animated fadeInRight" data-toggle="offcanvas">
             <span class="hamb-top"></span>
@@ -28,8 +29,7 @@ $header_class = '';
             <span class="navbar-toggler-icon"></span>
           </button>
         <?php } ?>
-        <?php get_template_part ( 'templates/menus/menu', 'branding' ) ?>
-      </div>
+      <!-- </div> -->
       <?php if( $options['menu_type'] === 'right-flyout-menu') { ?>
         <?php get_template_part ( 'templates/menus/menu', 'sidebar' ) ?>
       <?php } else if ( $options['menu_type'] === 'full-flyout-menu'){ ?>

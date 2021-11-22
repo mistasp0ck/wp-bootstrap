@@ -972,14 +972,7 @@ if( !function_exists( "wpbs_theme_js" ) ) {
         wp_enqueue_script( 'comment-reply' );
     }
 
-    // This is the full Bootstrap js distribution file. If you only use a few components that require the js files consider loading them individually instead
-    // wp_register_script( 'bootstrap', 
-    //   get_template_directory_uri() . '/bower_components/bootstrap-sass/assets/javascript/bootstrap.js', 
-    //   array('jquery'), 
-    //   '1.2' );
     wp_enqueue_script('lightbox', get_template_directory_uri() . '/bower_components/lity/dist/lity.min.js', array('jquery'), '1.6.5', true);
-
-    // wp_enqueue_script('fancybox', get_stylesheet_directory_uri() . '/library/js/jquery.fancybox.min.js', '3.5.7'); 
 
     wp_register_script( 'wpbootstrap-js', 
       get_template_directory_uri() . '/library/dist/js/scripts.33821fbe.min.js',
@@ -989,12 +982,7 @@ if( !function_exists( "wpbs_theme_js" ) ) {
     wp_register_script( 'modernizr', 
       get_template_directory_uri() . '/bower_components/modernizer/modernizr.js', 
       array('jquery'), 
-      '1.2' );
-    // **** Uncomment if using grunticon ****
-    // wp_register_script( 'grunticon-loader', 
-    //   get_template_directory_uri() . '/library/dist/img/grunticon.loader.js', '1.2' );  
-
-    // wp_enqueue_script( 'grunticon-loader' );    
+      '1.2' ); 
 
     wp_enqueue_script( 'wpbootstrap-js' );
 
